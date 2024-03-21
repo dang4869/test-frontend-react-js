@@ -1,24 +1,62 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { AppProvider, Page, LegacyCard, Button, Icon, Text, Layout, FormLayout, TextField, Box, DataTable } from '@shopify/polaris';
+import { ArrowLeftIcon, PlusCircleIcon } from "@shopify/polaris-icons";
+import General from './components/general';
+import Option from './components/option';
+import Preview from './components/preview';
+import { useState } from 'react';
+import translations from "@shopify/polaris/locales/en.json";
+import OptionVr2 from './components/optionvr2';
 
 function App() {
+  const [qty, setQty] = useState(1)
+
+  const [addOption, setAddOption] = useState([<Option qty={qty} />])
+  const handleDeleteOptions = () => {
+    let listOptions = addOption.filter((option, index) => index !== (option.length - 1))
+    setAddOption([...listOptions])
+  }
+  const handleAddOption = () => {
+    setAddOption(addOption.concat(<OptionVr2 key={addOption.length} qty={qty + 1} handleDeleteOptions={handleDeleteOptions} />))
+    setQty(qty + 1)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProvider i18n={translations}>
+      <div className="wrapper">
+        <div>
+          <Text variant="headingXl" as="h4">
+            Create volume discount
+          </Text>
+          <Icon source={ArrowLeftIcon} tone="base" />
+        </div>
+        <Page fullWidth>
+          <Layout>
+            <Layout.Section>
+              <General />
+              <Layout.Section>
+                <LegacyCard title="" sectioned>
+                  <Box paddingBlockEnd={200}>
+                    <Text variant="headingXl" as="h6">
+                      Online store dashboard
+                    </Text>
+                  </Box>
+                  {addOption.map((option, index) => {
+                    return option
+                  })}
+                  <Box paddingBlock={500}><Button fullWidth onClick={handleAddOption} variant='primary' tone='success' icon={PlusCircleIcon}>Add option</Button></Box>
+                </LegacyCard>
+              </Layout.Section>
+            </Layout.Section>
+            <Layout.Section variant="oneThird">
+              <Preview />
+            </Layout.Section>
+          </Layout>
+        </Page>
+      </div>
+    </AppProvider>
+
   );
 }
 
