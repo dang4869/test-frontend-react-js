@@ -69,7 +69,7 @@ function Option(props) {
                             />
                             <Text/>
                         </FormLayout.Group>
-                        <Button onClick={handleSubmit(handleAdd)}>Add Preview</Button>
+                        <Button onClick={handleSubmit(handleAdd)}  variant='primary' tone='success'>Add Preview</Button>
                     </FormLayout>
                 </Box>
            </Box>

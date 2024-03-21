@@ -1,4 +1,4 @@
-import { Text, FormLayout, TextField, Box, Button, AppProvider, Banner } from '@shopify/polaris';
+import { Text, FormLayout, TextField, Box, Button, AppProvider, Banner, BlockStack } from '@shopify/polaris';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import '../App.scss'
@@ -25,9 +25,9 @@ function OptionVr2(props) {
     return (
         <AppProvider>
             <div className='header-opt'> <Box>OPTION {props.qty}</Box></div>
-            <Box paddingBlock={2000} borderBlockEndWidth='050' borderColor='border'>
+            <Box paddingBlockEnd={2000} paddingBlockStart={800} borderBlockEndWidth='050'  borderColor='border'>
                 <FormLayout>
-                    <Button onClick={props.handleDeleteOptions}>Delete</Button>
+                <BlockStack inlineAlign='end'><Button onClick={props.handleDeleteOptions} variant='primary' tone='critical'>Delete</Button></BlockStack>
                     <FormLayout.Group condensed>
                         <Controller
                             name="title"
@@ -73,7 +73,7 @@ function OptionVr2(props) {
                             render={({ field }) => <TextField {...field} type='number' label="amount" placeholder='10 %' error={errors.type && <Banner status="critical">{errors.amount.message}</Banner>} />}
                         />
                     </FormLayout.Group>
-                    <Button onClick={handleSubmit(handleAdd)}>Add Preview</Button>
+                    <Button onClick={handleSubmit(handleAdd)}  variant='primary' tone='success'>Add Preview</Button>
                 </FormLayout>
             </Box>
         </AppProvider>
