@@ -1,5 +1,5 @@
 
-import './App.css';
+import './App.scss';
 import { AppProvider, Page, LegacyCard, Button, Icon, Text, Layout, FormLayout, TextField, Box, DataTable } from '@shopify/polaris';
 import { ArrowLeftIcon, PlusCircleIcon } from "@shopify/polaris-icons";
 import General from './components/general';
@@ -25,11 +25,14 @@ function App() {
   return (
     <AppProvider i18n={translations}>
       <div className="wrapper">
-        <div>
-          <Text variant="headingXl" as="h4">
-            Create volume discount
-          </Text>
-          <Icon source={ArrowLeftIcon} tone="base" />
+        <div className="header">
+          <div className="header-icon"><Icon source={ArrowLeftIcon} tone="base" /></div>
+        <div className="heading">
+            <Text variant="headingXl" as="h4">
+              Create volume discount
+            </Text>
+        </div>
+
         </div>
         <Page fullWidth>
           <Layout>

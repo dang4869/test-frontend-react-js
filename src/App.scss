@@ -1,0 +1,22 @@
+.wrapper{
+  width: 1024px;
+  margin: 0 auto;
+  .header{
+    display: flex;
+    padding-left: 40px;
+    padding-top: 20px;
+  }
+  .heading{
+    margin-left: 20px;
+  }
+  .header-icon{
+    padding-top: 9px;
+  }
+}
+
+.header-opt{
+  color:#ffff;
+   display:inline-block; 
+   background:#ff4800;
+   padding: 10px 3px;
+}

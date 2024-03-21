@@ -1,7 +1,7 @@
 import { Text, FormLayout, TextField, Box, Button, AppProvider, Banner } from '@shopify/polaris';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import '../App.css'
+import '../App.scss'
 
 function OptionVr2(props) {
     const { register, handleSubmit, control, formState: { errors } } = useForm({ mode: "all" })
